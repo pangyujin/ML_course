@@ -6,6 +6,8 @@ Least Square
 
 import numpy as np
 
+from costs import compute_mse
+
 
 def least_squares(y, tx):
     """Calculate the least squares solution.
@@ -23,8 +25,10 @@ def least_squares(y, tx):
     (array([ 0.21212121, -0.12121212]), 8.666684749742561e-33)
     """
     # ***************************************************
-    # COPY YOUR CODE FROM EX03 HERE
-    # least squares: TODO
+    # least squares
     # returns optimal weights, MSE
     # ***************************************************
-    raise NotImplementedError
+    optimal_weights = np.linalg.solve(tx.T @ tx, tx.T @ y)
+    mse = compute_mse(y, tx, optimal_weights)
+    
+    return optimal_weights, mse
