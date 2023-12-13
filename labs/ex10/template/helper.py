@@ -47,3 +47,9 @@ def build_distance_matrix(data, mu):
     ####################################
     ### ___ Enter your code here ___ ###
     ####################################
+    N, _ = data.shape
+    k, _ = mu.shape
+    dist_mat = np.zeros((N, k))
+    for j in range(k):
+        dist_mat[:, j] = np.sum(np.square(data - mu[j, :]), axis=1)
+    return dist_mat
